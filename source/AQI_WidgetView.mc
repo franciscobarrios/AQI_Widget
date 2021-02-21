@@ -42,27 +42,26 @@ class AQI_WidgetView extends WatchUi.View {
 
     	if(_aqiColor !=null){
     		switch(_aqiColor){
-    			case "green":
+    			case $.GREEN:
     				txtAqi.setColor(Gfx.COLOR_GREEN);
     				break;
-    			case "yellow":
+    			case $.YELLOW:
     				txtAqi.setColor(Gfx.COLOR_YELLOW);
     				break;
-    			case "orange":
+    			case $.ORANGE:
     				txtAqi.setColor(Gfx.COLOR_ORANGE);
     				break;
-    			case "red":
+    			case $.RED:
     				txtAqi.setColor(Gfx.COLOR_RED);
     				break;
-    			case "purple":
+    			case $.PURPLE:
     				txtAqi.setColor(Gfx.COLOR_PURPLE);
     				break;
-    			case "dark_red":
+    			case $.DARK_RED:
     				txtAqi.setColor(Gfx.COLOR_DK_RED);
     				break;
     		}
     	}
-
     	txtCity.setText(_city.toString());
     }
 

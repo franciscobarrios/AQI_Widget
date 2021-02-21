@@ -1,3 +1,4 @@
 <strings>
-    <string id="AppName">AQI_Widget</string>
+    <string id="AppName">AQI Widget</string>
+    <string id="error">Oops,\nsomething\nwent wrong!</string>
 </strings>
