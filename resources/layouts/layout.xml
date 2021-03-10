@@ -2,10 +2,10 @@
 
 	<layout id="MainLayout">
 		<!-- HUM AND TEMP -->
-		<label id="temp" x="30%" y="40" font="Gfx.FONT_XTINY"
+		<label id="temp" x="30%" y="40" font="Gfx.FONT_TINY"
 			justification="Gfx.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
 
-		<label id="hum" x="70%" y="40" font="Gfx.FONT_XTINY"
+		<label id="hum" x="70%" y="40" font="Gfx.FONT_TINY"
 			justification="Gfx.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
 		<!-- HUM AND TEMP -->
 
@@ -17,7 +17,7 @@
 
 
 		<!-- CITY -->
-		<label id="city" x="center" y="70%" font="Gfx.FONT_XTINY"
+		<label id="city" x="center" y="70%" font="Gfx.FONT_TINY"
 			justification="Gfx.TEXT_JUSTIFY_CENTER" />
 		<!-- CITY -->
 
