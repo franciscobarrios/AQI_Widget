@@ -10,25 +10,41 @@ class AQI_WidgetApp extends Application.AppBase {
 
 	hidden var _lat;
   	hidden var _lon;
+  	var _model;
+	var _controller;
 
-    function initialize() {AppBase.initialize();}
+    function initialize() {
+    	AppBase.initialize();
+    	_model 		= new $.LocationModel();
+		_controller = new $.LocationController();
+		
+		System.println(_controller);
+    }
 
-    // onStart() is called on application start up
+	function onPosition(info) {
+    	var latitude  = Position.getInfo().position.toDegrees()[0].toFloat();
+    	var longitude = Position.getInfo().position.toDegrees()[1].toFloat();
+    	
+    	System.println(info);
+    	
+   		makeRequest(latitude, longitude);
+  	}
+  	
     function onStart(state) {
-    	Position.enableLocationEvents(Position.LOCATION_ONE_SHOT,method(: onPosition));
-    	onPosition();
+		_controller.start();
     }
 
-    // onStop() is called when your application is exiting
     function onStop(state) {
+    
     }
 
-    // Return the initial view of your application here
     function getInitialView() {
         return [ new AQI_WidgetView("","","","","") ];
     }
 
 	function onReceive(responseCode, data) {
+	
+	System.println(data);
 		if (responseCode == 200) {
 			var jsonResponse = data;
 	    	var status = jsonResponse.get("status");
@@ -74,28 +90,22 @@ class AQI_WidgetApp extends Application.AppBase {
   	}
 
     function makeRequest(lat, lon) {
-    // Villarrica  -39.21703484861341, -72.24387544507489
-    // var url= URL_BASE + "lat=-39.21703484861341&lon=-72.24387544507489" + "&key=" + $.API_KEY;
-
-    // Reykjavík 64.18513020159337, -21.728636234635115
-     //var url= URL_BASE + "lat=64.18513020159337&lon=-21.728636234635115" + "&key=" + $.API_KEY;
-
-    // Mumbai 19.117931689682074, 72.89133494744027
-    // var url= URL_BASE + "lat=19.117931689682074&lon=72.89133494744027" + "&key=" + $.API_KEY;
-
-    var url = URL_BASE + "lat=" + lat + "&lon=" + lon + "&key=" + $.API_KEY;
-    var params = null;
-    var options = {
+	    // Villarrica  -39.21703484861341, -72.24387544507489
+	    // var url= URL_BASE + "lat=-39.21703484861341&lon=-72.24387544507489" + "&key=" + $.API_KEY;
+	
+	    // Reykjavík 64.18513020159337, -21.728636234635115
+	     //var url= URL_BASE + "lat=64.18513020159337&lon=-21.728636234635115" + "&key=" + $.API_KEY;
+	
+	    // Mumbai 19.117931689682074, 72.89133494744027
+	    // var url= URL_BASE + "lat=19.117931689682074&lon=72.89133494744027" + "&key=" + $.API_KEY;
+	
+	    var url = URL_BASE + "lat=" + lat + "&lon=" + lon + "&key=" + $.API_KEY;
+	    var params = null;
+	    var options = {
 			:method       => Communications.HTTP_REQUEST_METHOD_GET,
          	:responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
     	};
-    var responseCallback = method(:onReceive);
-    Communications.makeWebRequest(url, params, options, method(:onReceive));
-  }
-
-  function onPosition() {
-    var lat = Position.getInfo().position.toDegrees()[0];
-    var lon = Position.getInfo().position.toDegrees()[1];
-    makeRequest(lat, lon);
-  }
+    	var responseCallback = method(:onReceive);
+    	Communications.makeWebRequest(url, params, options, method(:onReceive));
+	}
 }
