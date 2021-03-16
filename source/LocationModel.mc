@@ -10,7 +10,7 @@ class LocationModel{
 	}
 	
 	function enablePositioning() {
-		Position.enableLocationEvents(Position.LOCATION_ONE_SHOT, self.method(:onPosition));
+		Position.enableLocationEvents(Position.LOCATION_CONTINUOUS, self.method(:onPosition));
 	}
 	
 	function disablePositioning() {
@@ -36,8 +36,6 @@ class LocationModel{
 		 }
 		
 		_locationText = _lat.toString() + ",\n" + _long.toString() + "\n" + accuracyText;
-		
-		System.println(_locationText);		
 	}
 	
 	function getLocationText() {
