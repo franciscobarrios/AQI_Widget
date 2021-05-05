@@ -3,7 +3,6 @@ using Toybox.WatchUi;
 using Toybox.WatchUi as Ui;
 using Toybox.Position;
 using Toybox.System;
-using GpsBarrel as Gps;
 
 const URL_BASE = "https://api.airvisual.com/v2/nearest_city?";
 
@@ -22,15 +21,15 @@ class AQI_WidgetApp extends Application.AppBase {
 
     function initialize() {
     	AppBase.initialize();
-    	Gps.gpsMode("CONTINUOUS");
-    	Gps.start();
+    	//Gps.gpsMode("CONTINUOUS");
+    	//Gps.start();
     }
 
 	
     function onStart(state) {
     
-    	var location = Gps.getLocation();
-    	System.println(location);
+    	//var location = Gps.getLocation();
+    	
     
     	//makeRequest(latitude, longitude);
     
